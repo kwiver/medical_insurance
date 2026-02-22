@@ -266,3 +266,199 @@ Removing too much data weakens model generalization.
 The dataset must reflect real Nigerian healthcare realities.
 
 ---
+
+
+## Exploratory Data Analysis (EDA)
+
+---
+
+## 📌 Project Overview
+
+This project analyzes demographic, behavioral, and regional factors that influence hospital bills.  
+The goal of this Exploratory Data Analysis (EDA) is to identify patterns, relationships, and key drivers of hospital costs to guide predictive modeling.
+
+---
+
+# 🔎 1. Univariate Analysis
+
+## 1.1 Age
+- Range: 18 – 65 years  
+- Median: ~40 years  
+- Even distribution across age groups  
+- No extreme outliers  
+
+**Insight:**  
+Age is well distributed and suitable for predictive modeling.
+
+---
+
+## 1.2 BMI
+- Range: ~16 to 50+  
+- Majority between 25–35  
+- Slight right skew  
+- Few high-BMI outliers  
+
+**Insight:**  
+BMI shows moderate variability and may influence hospital bills, especially at higher values.
+
+---
+
+## 1.3 Hospital Bill
+- Highly right-skewed distribution  
+- Majority have low to moderate bills  
+- Small group with extremely high costs  
+
+**Insight:**  
+Hospital bills are not normally distributed.  
+A log transformation may improve regression performance.
+
+---
+
+## 1.4 Smoking Status
+- Smokers: ~54.5%  
+- Non-smokers: ~45.5%  
+
+**Insight:**  
+Balanced distribution. Smoking status is expected to significantly influence hospital costs.
+
+---
+
+## 1.5 State Distribution
+- Multiple states represented (Lagos, Abuja, Kano, Enugu, Rivers, Kaduna, Oyo)  
+- No major imbalance observed  
+
+**Insight:**  
+Regional variation may contribute to hospital bill differences.
+
+---
+
+# 🔁 2. Bivariate Analysis
+
+## 2.1 Age vs Hospital Bill
+- Clear positive relationship  
+- Costs increase with age  
+- Higher variability among older individuals  
+
+**Conclusion:**  
+Age is positively associated with hospital expenses.
+
+---
+
+## 2.2 BMI vs Hospital Bill
+- Weak to moderate positive relationship  
+- Higher BMI associated with greater cost variability  
+
+**Conclusion:**  
+BMI influences hospital bills but is not a dominant standalone predictor.
+
+---
+
+## 2.3 Smoker vs Hospital Bill
+- Strong visual separation between smokers and non-smokers  
+- Smokers consistently incur significantly higher hospital bills  
+- Most high-cost outliers are smokers  
+
+**Conclusion:**  
+Smoking status is the strongest individual predictor of hospital bills.
+
+---
+
+## 2.4 State vs Hospital Bill
+- Average hospital bills vary across states  
+- Some states show slightly higher mean costs  
+- Differences are present but not extreme  
+
+**Conclusion:**  
+State contributes moderately to cost variation.
+
+---
+
+# 🔬 3. Multivariate Analysis
+
+## 3.1 Correlation Analysis
+
+Correlation findings:
+
+- Age ↔ Hospital Bill → Moderate positive correlation (~0.25)  
+- BMI ↔ Hospital Bill → Weak to moderate correlation (~0.16)  
+- Children ↔ Hospital Bill → Very weak correlation  
+- Low correlation among independent variables  
+
+**Conclusion:**  
+- Age has the strongest linear relationship with hospital bills.  
+- Multicollinearity is not a concern.
+
+---
+
+## 3.2 Pairplot Insights (Age, BMI, Hospital Bill, Smoker)
+
+- Smokers form a distinct high-cost cluster  
+- Hospital bills increase sharply for smokers as age increases  
+- Non-smokers show gradual cost increase  
+- BMI impact strengthens when combined with smoking  
+
+**Conclusion:**  
+Feature interactions significantly impact hospital bills.
+
+---
+
+## 3.3 Age + Smoker + State (Facet Analysis)
+
+- Across all states, smokers have higher hospital bills  
+- Age–cost relationship is consistent across regions  
+- Smoking effect is stronger than regional variation  
+
+**Conclusion:**  
+Smoking effect is dominant and consistent across states.
+
+---
+
+# 📈 Key Drivers Summary
+
+## 🔥 Strong Influence
+- Smoking Status  
+- Age  
+
+## ⚖ Moderate Influence
+- Age  
+- State  
+
+## 📉 Weak Influence
+- BMI (alone)  
+- Number of Children  
+
+---
+
+# 🏆 Overall Findings
+
+1. Hospital bills are highly skewed due to high-cost smokers.  
+2. Smoking status is the most powerful predictor.  
+3. Age shows a consistent positive relationship with hospital bills.  
+4. BMI has moderate influence, especially in interaction with smoking.  
+5. State variation exists but is secondary.  
+6. Feature interaction effects are important drivers of cost.
+
+---
+
+# 🎯 Business & Modeling Implications
+
+## Business Implications
+- Smoking significantly increases healthcare cost exposure.
+- Older smokers represent the highest-risk group.
+- Preventive interventions targeting smoking could reduce overall costs.
+
+## Modeling Implications
+- Prioritize smoking status in feature selection.
+- Include interaction terms (Age × Smoker, BMI × Smoker).
+- Apply log transformation to `hospital_bill`.
+- Consider outlier handling strategies.
+- Tree-based models (Random Forest, Gradient Boosting) may better capture interaction effects.
+
+---
+
+# 🚀 Conclusion
+
+The EDA reveals that hospital bills are primarily driven by smoking status and age.  
+BMI and state contribute moderately, while feature interactions amplify cost effects.
+
+These insights provide a strong foundation for building a robust and accurate predictive model.
