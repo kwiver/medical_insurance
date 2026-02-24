@@ -81,6 +81,18 @@ else:
     
     """)
     
+# navigation
+st.markdown("---")
+button_col1, button_col2 = st.columns(2)
+with button_col1:
+    if st.button("🔙 Back to Prediction", use_container_width=True):
+        with st.spinner("Navigating back to prediction page..."):
+            st.switch_page("pages/prediction.py")
+with button_col2:   
+    if st.button("🏠 Back to Dashboard", use_container_width=True):
+        with st.spinner("Navigating back to dashboard..."):
+            st.switch_page("app.py")
+    
 # footer
 st.markdown("---")
 st.caption("Customer churn prediction system")

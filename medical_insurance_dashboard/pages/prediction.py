@@ -53,31 +53,9 @@ def load_dataset():
     except FileNotFoundError as e:
         st.error(f"Dataset not found {e}")
         st.stop()
-
-#  get filtered options
-def get_filtered_options(df, gender=None, state=None, smoker=None):
-    filtered_df = df.copy()
-    
-    if gender:
-        filtered_df = filtered_df[filtered_df["gender"] == gender]
-        
-    if state:
-        filtered_df = filtered_df[filtered_df["state"] == state]
-        
-    if smoker:
-        filtered_df = filtered_df[filtered_df["smoker"] == smoker]  
-        
-        
-    options ={
-        "ages": sorted(filtered_df["age"].unique().tolist(), reverse=True),
-        "bmis": sorted(filtered_df["bmi"].unique().tolist(), reverse=True),
-        "childrens": sorted(filtered_df["children"].unique().tolist(), reverse=True),
-        "genders": sorted(filtered_df["gender"].unique().tolist()),
-        "states": sorted(filtered_df["state"].unique().tolist()) if gender else sorted(df["state"].unique().tolist()),
-        "smokers": sorted(filtered_df["smoker"].unique().tolist()) if gender or state else sorted(df["smoker"].unique().tolist()),
-    }      
-    
-    return options
+    except Exception as e:
+        st.error(f"Error loading dataset: {e}")
+        st.stop()
 
 def predict_bill(patient_data, model):
     
@@ -91,9 +69,7 @@ def predict_bill(patient_data, model):
         st.error(f"Prediction error: {e}")
 
 
-
 def calculate_risk(age, bmi, smoker):
-
     score = 0
 
     # Age scoring
@@ -144,14 +120,10 @@ def main():
     model = load_model()
 
     df = load_dataset()
-    
-    options = get_filtered_options(df)
-    
-       
+           
     st.markdown("---")
     st.subheader("Enter Patient Details")
     
-    # create two columns for input
     col1, col2 = st.columns(2)
     with col1:
         age = st.number_input(
@@ -186,10 +158,10 @@ def main():
         
         children = st.number_input(
             "Number of Children",
-            min_value=0.0, 
-            max_value=10.0, 
-            value=1.0,
-            step=1.0,
+            min_value=0, 
+            max_value=10, 
+            value=0,
+            step=1,
             help="Number of children/dependents"
         )
         
@@ -202,7 +174,7 @@ def main():
     # get result
     if st.button("Predict Medical Bill", type="primary", use_container_width=True):
         
-        if not all([age, gender, state, bmi, children, smoker]):
+        if age is None or gender is None or state is None or bmi is None or smoker is None:
             st.warning("⚠️ Please fill all the fields")
         else:
             patient_data = {
