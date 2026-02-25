@@ -7,6 +7,28 @@ st.set_page_config(
     initial_sidebar_state = "expanded"
 )
 
+# navigations
+hide_default_sidebar = """
+<style>
+    [data-testid="stSidebarNav"] {display: none;}
+</style>
+    """
+st.markdown(hide_default_sidebar, unsafe_allow_html=True)
+
+with st.sidebar:
+    st.markdown("### 🏥 MediCost NG")
+    st.markdown("---")
+    st.markdown("**Navigation**")
+    st.page_link("home.py",                label="🏠 Home",               )
+    st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
+    st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
+    st.page_link("pages/prediction_result.py",       label="📋 Prediction Results", )
+    st.markdown("---")
+    st.markdown("**Project Info**")
+    st.markdown("Dataset: `nigeria_medical_insurance.csv`")
+    st.markdown("Model: Regression ensemble")
+    st.markdown("Version: 1.0.0")
+
 st.title("📄 Prediction Result")
 if "predicted_bill" not in st.session_state:
     st.warning("No prediction found. Please make a prediction first.")
@@ -87,7 +109,7 @@ button_col1, button_col2 = st.columns(2)
 with button_col1:
     if st.button("🔙 Back to Prediction", use_container_width=True):
         with st.spinner("Navigating back to prediction page..."):
-            st.switch_page("pages/prediction.py")
+            st.switch_page("pages/medical_cost_predictor.py")
 with button_col2:   
     if st.button("🏠 Back to Dashboard", use_container_width=True):
         with st.spinner("Navigating back to dashboard..."):

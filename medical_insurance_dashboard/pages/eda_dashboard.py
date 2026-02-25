@@ -10,7 +10,29 @@ def medical_bill_dashboard():
         page_title="Medical Insurance Dashboard",
         layout="wide",
         initial_sidebar_state="expanded"
-    )  
+    )
+    
+    # navigations
+    hide_default_sidebar = """
+    <style>
+        [data-testid="stSidebarNav"] {display: none;}
+    </style>
+        """
+    st.markdown(hide_default_sidebar, unsafe_allow_html=True)
+
+    with st.sidebar:
+        st.markdown("### 🏥 MediCost NG")
+        st.markdown("---")
+        st.markdown("**Navigation**")
+        st.page_link("home.py",                label="🏠 Home",               )
+        st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
+        st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
+        st.page_link("pages/prediction_result.py",       label="📋 Prediction Results", )
+        st.markdown("---")
+        st.markdown("**Project Info**")
+        st.markdown("Dataset: `nigeria_medical_insurance.csv`")
+        st.markdown("Model: Regression ensemble")
+        st.markdown("Version: 1.0.0") 
         
     #load datast
     df = pd.read_csv("../data/cleaned/cleaned_nigeria_medical_insurance.csv")
@@ -226,8 +248,8 @@ def medical_bill_dashboard():
     # prediction system
     st.markdown("---") 
     if st.button("Predict Your Medical Bill here", type="primary", use_container_width=True):
-        with st.spinner("Calculating predicted bill..."):
-            st.switch_page("pages/prediction.py")
+        with st.spinner("Page loading..."):
+            st.switch_page("pages/medical_cost_predictor.py")
     
     
     
