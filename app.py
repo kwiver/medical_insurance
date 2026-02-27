@@ -31,7 +31,7 @@ def home():
         st.markdown("### 🏥 MediCost NG")
         st.markdown("---")
         st.markdown("**Navigation**")
-        st.page_link("home.py",                label="🏠 Home",               )
+        st.page_link("app.py",                label="🏠 Home",               )
         st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
         st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
         st.page_link("pages/model_eval.py",       label="⚖️ Model Evaluation", )

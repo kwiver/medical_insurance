@@ -19,7 +19,7 @@ with st.sidebar:
     st.markdown("### 🏥 MediCost NG")
     st.markdown("---")
     st.markdown("**Navigation**")
-    st.page_link("home.py",                label="🏠 Home",               )
+    st.page_link("app.py",                label="🏠 Home",               )
     st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
     st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
     st.page_link("pages/model_eval.py",       label="⚖️ Model Evaluation", )
@@ -105,14 +105,18 @@ else:
     
 # navigation
 st.markdown("---")
-button_col1, button_col2 = st.columns(2)
+button_col1, button_col2, button_col3 = st.columns(3, gap="medium")
 with button_col1:
     if st.button("🔙 Back to Predictor", use_container_width=True):
         with st.spinner("Navigating back to predictor page..."):
             st.switch_page("pages/medical_cost_predictor.py")
 with button_col2:   
-    if st.button("🏠 Back to Dashboard", use_container_width=True):
-        with st.spinner("Navigating back to dashboard..."):
+    if st.button("📊  Back to EDA Dashboard", use_container_width=True):
+        with st.spinner("Navigating back to EDA dashboard..."):
+            st.switch_page("pages/eda_dashboard.py")
+with button_col3:
+    if st.button("🏠 Back to Home page", use_container_width=True):
+        with st.spinner("Navigating to Home page..."):
             st.switch_page("app.py")
     
 # footer

@@ -23,7 +23,7 @@ with st.sidebar:
     st.markdown("### 🏥 MediCost NG")
     st.markdown("---")
     st.markdown("**Navigation**")
-    st.page_link("home.py",                label="🏠 Home",               )
+    st.page_link("app.py",                label="🏠 Home",               )
     st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
     st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
     st.page_link("pages/model_eval.py",       label="⚖️ Model Evaluation", )
@@ -56,7 +56,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load("../models/lr_model_pipeline.pkl")
+        model = joblib.load("models/lr_model_pipeline.pkl")
         return model
     except FileNotFoundError as e:
         st.error(f"Model artifact not found: {e}")
@@ -70,7 +70,7 @@ def load_model():
 @st.cache_data()
 def load_dataset():
     try:
-        df = pd.read_csv("../data/cleaned/cleaned_nigeria_medical_insurance.csv")
+        df = pd.read_csv("data/cleaned/cleaned_nigeria_medical_insurance.csv")
         return df
     except FileNotFoundError as e:
         st.error(f"Dataset not found {e}")
