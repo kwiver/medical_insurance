@@ -34,7 +34,7 @@ def home():
         st.page_link("home.py",                label="🏠 Home",               )
         st.page_link("pages/eda_dashboard.py",           label="📊 EDA Dashboard",      )
         st.page_link("pages/medical_cost_predictor.py",    label="🔮 Medical Cost Predictor",       )
-        st.page_link("pages/prediction_result.py",       label="📋 Prediction Results", )
+        st.page_link("pages/model_eval.py",       label="⚖️ Model Evaluation", )
         st.markdown("---")
         st.markdown("**Project Info**")
         st.markdown("Dataset: `nigeria_medical_insurance.csv`")
