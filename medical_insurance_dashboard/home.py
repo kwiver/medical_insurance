@@ -134,7 +134,7 @@ def home():
         st.markdown("""
             📊 **EDA Dashboard**
             
-            Interactive visualisations of the cleaned dataset; distributions, correlations, and cost breakdowns across age, BMI, smoking status, and state.
+            Interactive visualisations of the cleaned dataset; distributions, correlations, and cost breakdowns across all features
         """)
         if st.button("📊  EDA Dashboard", use_container_width=True):
             with st.spinner("EDA Dashboard Page Loading..."):
@@ -152,13 +152,13 @@ def home():
                 
     with p3:
         st.markdown("""
-            📋 **Prediction Results**
+            📋 **Model Evaluation**
             
-            Review and compare past predictions, inspect model performance metrics (R², RMSE, MAE), and download results for reporting.
+            Inspect model performance metrics (R², RMSE, MAE), and download for report.
         """)
-        if st.button("📋  Prediction Results", use_container_width=True):
-            with st.spinner("Prediction Results Page Loading..."):
-                st.switch_page("pages/prediction_result.py")
+        if st.button("📋  Model Evaluation", use_container_width=True):
+            with st.spinner("Model Evaluation Metrics Page Loading..."):
+                st.switch_page("pages/model_eval.py")
         
     st.markdown("---")
 
