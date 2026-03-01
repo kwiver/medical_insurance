@@ -121,4 +121,4 @@ with button_col3:
     
 # footer
 st.markdown("---")
-st.caption("Customer churn prediction system")
+st.caption("Medical insurance cost prediction system")

@@ -231,7 +231,7 @@ def main():
               
     # footer
     st.markdown("---")
-    st.caption("Customer churn prediction system")
+    st.caption("Medical insurance cost prediction system")
         
 if __name__  ==  "__main__":
     main()

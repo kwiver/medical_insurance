@@ -255,6 +255,6 @@ def medical_bill_dashboard():
     
     # footer
     st.markdown("---")
-    st.caption("Customer churn prediction system")
+    st.caption("Medical insurance EDA dashboard")
     
 medical_bill_dashboard()

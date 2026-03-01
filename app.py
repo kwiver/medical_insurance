@@ -118,8 +118,42 @@ def home():
         """)
         
     st.markdown("---")
+    st.markdown("""
+        Data
+        ### Dataset Overview
+        
+        The source file ***nigeria_medical_insurance.csv*** contains patient-level insurance records. It arrived with known quality issues;
+        duplicates, inconsistent categorical labels, and missing entries, addressed during the cleaning phase.
+    """)
     
-           
+
+    
+    data = {
+        "Column": ["age", "sex", "bmi", "children", "smoker", "region", "charges"],
+        "Description": [
+            "Age of the policy holder (years)",
+            "Gender of the policy holder",
+            "Body Mass Index; a measure of body fat relative to height/weight",
+            "Number of dependants covered under the plan",
+            "Whether the beneficiary smokes (Yes/No)",
+            "Nigerian state of the beneficiary",
+            "Individual medical costs billed by insurer (₦)"
+        ],
+        "Type": [
+            "Numeric",
+            "Categorical",
+            "Numeric",
+            "Numeric",
+            "Categorical",
+            "Categorical",
+            "Target"
+        ]
+    }
+    st.table(data)
+        
+    st.markdown("---")
+    
+    
     st.markdown("""
         Navigation
         
@@ -161,6 +195,9 @@ def home():
                 st.switch_page("pages/model_eval.py")
         
     st.markdown("---")
+    # footer
+    st.markdown("---")
+    st.caption("Medical insurance cost home page")
 
 
 home()
