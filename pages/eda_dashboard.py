@@ -31,8 +31,9 @@ def medical_bill_dashboard():
         st.markdown("---")
         st.markdown("**Project Info**")
         st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-        st.markdown("Model: Regression ensemble")
-        st.markdown("Version: 1.0.0") 
+        st.markdown("Model: Linear Regression")
+        st.markdown("Version: 1.0.0")
+        st.markdown("---")
         
     #load datast
     df = pd.read_csv("data/cleaned/cleaned_nigeria_medical_insurance.csv")
@@ -74,8 +75,8 @@ def medical_bill_dashboard():
      # state filter
     state_filter = st.sidebar.multiselect(
         "State",
-        options=df["state"].unique(),
-        default=df["state"].unique()
+        options=sorted(df["state"].unique()),
+        default=sorted(df["state"].unique())
     )
     
      # apply filter
@@ -217,7 +218,7 @@ def medical_bill_dashboard():
     left, right = st.columns(2)
     with left:
         st.subheader("Average Hospital Bill by State")
-        state_bill = filtered_df.groupby("state")["hospital_bill"].mean().reset_index()
+        state_bill = filtered_df.groupby("state")["hospital_bill"].mean().sort_values(ascending=False).reset_index()
         fig_state_bar = px.bar(
             state_bill,
             x="state",
@@ -247,7 +248,7 @@ def medical_bill_dashboard():
     
     # prediction system
     st.markdown("---") 
-    if st.button("Predict Your Medical Bill here", type="primary", use_container_width=True):
+    if st.button("Click Here to Use Medical Bill Predictor", type="primary", use_container_width=True):
         with st.spinner("Page loading..."):
             st.switch_page("pages/medical_cost_predictor.py")
     
@@ -255,6 +256,6 @@ def medical_bill_dashboard():
     
     # footer
     st.markdown("---")
-    st.caption("Medical insurance EDA dashboard")
+    st.caption("Medical insurance EDA")
     
 medical_bill_dashboard()

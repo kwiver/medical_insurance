@@ -23,7 +23,7 @@ def home():
 
     # header
     st.title("🏥 Medical Cost Prediction System")
-    st.caption("")
+    # st.caption("")
     st.markdown("---")
     
     # navigations
@@ -38,9 +38,8 @@ def home():
         st.markdown("---")
         st.markdown("**Project Info**")
         st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-        st.markdown("Model: Regression ensemble")
+        st.markdown("Model: Linear Regression")
         st.markdown("Version: 1.0.0")
-        
         
 
     # about and business context
@@ -52,13 +51,13 @@ def home():
             ### Why This System Matters
             
             Healthcare costs in Nigeria vary dramatically across lifestyle factors, geography, and demographics.
-            Insurance companies currently rely on manual judgement or overly broad actuarial tables that
+            Insurance companies currently rely on manual judgement or overly broad statistical calculation tables that
             introduce pricing bias and underwriting risk.
             
             This project delivers a strong data-driven ***Medical Cost Prediction System***, trained on 
             real Nigerian insurance records, that replaces guesswork with statistically sound estimates.
-            The system processes patient attributes such as age, BMI, smoking status, number of dependants,
-            and state to predict expected medical charges with measurable accuracy.
+            The system processes patient attributes such as age, BMI, smoking habits, number of dependants,
+            and geographical factor like state to predict expected medical charges with measurable accuracy.
         """)
 
     with col_b:
@@ -114,7 +113,7 @@ def home():
             
             **Business Insights**
             
-            Translate model outputs into actionable recommendations for pricing teams and risk analysts.
+            Translate model insights and outputs into actionable recommendations for pricing teams and risk analysts.
         """)
         
     st.markdown("---")
@@ -188,13 +187,13 @@ def home():
         st.markdown("""
             📋 **Model Evaluation**
             
-            Inspect model performance metrics (R², RMSE, MAE), and download for report.
+            Inspect and compare model performance metrics, such as: R² score, RMSE, MAE and MSE, through charts and metric cards
         """)
         if st.button("📋  Model Evaluation", use_container_width=True):
             with st.spinner("Model Evaluation Metrics Page Loading..."):
                 st.switch_page("pages/model_eval.py")
         
-    st.markdown("---")
+        
     # footer
     st.markdown("---")
     st.caption("Medical insurance cost home page")

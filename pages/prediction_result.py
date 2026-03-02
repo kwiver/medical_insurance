@@ -26,7 +26,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Project Info**")
     st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-    st.markdown("Model: Regression ensemble")
+    st.markdown("Model: Linear Regression")
     st.markdown("Version: 1.0.0")
 
 st.title("📄 Prediction Result")
@@ -105,7 +105,7 @@ else:
     
 # navigation
 st.markdown("---")
-button_col1, button_col2, button_col3 = st.columns(3, gap="medium")
+button_col1, button_col2, button_col3, button_col4 = st.columns(4, gap="small")
 with button_col1:
     if st.button("🔙 Back to Predictor", use_container_width=True):
         with st.spinner("Navigating back to predictor page..."):
@@ -118,6 +118,10 @@ with button_col3:
     if st.button("🏠 Back to Home page", use_container_width=True):
         with st.spinner("Navigating to Home page..."):
             st.switch_page("app.py")
+with button_col4:
+    if st.button("⚖️ Go to Model Evaluation page", use_container_width=True):
+        with st.spinner("Navigating to Model Evaluation page..."):
+            st.switch_page("pages/model_eval.py")
     
 # footer
 st.markdown("---")

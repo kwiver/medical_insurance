@@ -33,7 +33,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Project Info**")
     st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-    st.markdown("Model: Regression ensemble")
+    st.markdown("Model: Linear Regression")
     st.markdown("Version: 1.0.0")
     
 
@@ -202,6 +202,22 @@ st.info("""
     and shows strong interpretability, a key advantage for regulatory and insurance use cases.
     
 """)
+
+st.markdown("---")
+button_col1, button_col2, button_col3 = st.columns(3, gap="medium")
+with button_col1:
+    if st.button("🏠 Go to Home page", use_container_width=True):
+        with st.spinner("Navigating to Home page..."):
+            st.switch_page("app.py")
+with button_col2:   
+    if st.button("📊 Go to EDA Dashboard", use_container_width=True):
+        with st.spinner("Navigating back to EDA dashboard..."):
+            st.switch_page("pages/eda_dashboard.py")
+with button_col3:
+    if st.button("🔮 Go to Predictor", use_container_width=True):
+        with st.spinner("Navigating back to predictor page..."):
+            st.switch_page("pages/medical_cost_predictor.py")
+    
 
 # footer
 st.markdown("---")

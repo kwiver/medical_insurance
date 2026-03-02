@@ -30,7 +30,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Project Info**")
     st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-    st.markdown("Model: Regression ensemble")
+    st.markdown("Model: Linear Regression")
     st.markdown("Version: 1.0.0")
 
 st.markdown("""
