@@ -33,11 +33,11 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Project Info**")
     st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-    st.markdown("Model: Linear Regression")
+    st.markdown("Model: XGBoost Regression")
     st.markdown("Version: 1.0.0")
     
 
-st.title("⚖️ Model Evaluation: Linear Regression Metrics")
+st.title("⚖️ Model Evaluation: XGBoost Regression Metrics")
 # load dataset
 df = pd.read_csv("data/cleaned/cleaned_nigeria_medical_insurance.csv")
 
@@ -54,7 +54,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # load model
-model = joblib.load("models/lr_model_pipeline.pkl")
+model = joblib.load("models/xg_model_pipeline.pkl")
     
 # make predictions
 y_pred = model.predict(X_test)
@@ -77,7 +77,7 @@ def kpi_card(title, value, icon="📊", color="#2E86C1"):
             border-left: 6px solid {color};
             ">
             <div style="font-size:20px; color:gray;">{title}</div>
-            <div style="font-size:22px; font-weight:bold; margin-top:5px;">
+            <div style="font-size:16px; font-weight:bold; margin-top:5px;">
                 {value}
             </div>
         </div>
@@ -160,31 +160,25 @@ with col2:
 st.markdown("---")
 
 
-st.subheader("Feature Importance (Linear Coefficients)")
+st.subheader("Feature Importance - XGBoost Model")
 # st.write("Top most important features based on linear coefficients")
 
-linear_model = model.named_steps["linearregression"]
-    
-# Load saved model coefficients
-linear_model = model.named_steps["linearregression"]
+xg_model = model.named_steps["xgregressor"]
 feature_names = model.named_steps["preprocessor"].get_feature_names_out()
 
-coef_df = pd.DataFrame({
+importance_df = pd.DataFrame({
     "feature": feature_names,
-    "coefficient": linear_model.coef_.ravel()
+    "importance": xg_model.feature_importances_
 })
 
-coef_df["abs_coefficient"] = coef_df["coefficient"].abs()
-coef_df = coef_df.sort_values("abs_coefficient", ascending=True)
-
+importance_df = importance_df.sort_values("importance", ascending=True)
 fig_coef = px.bar(
-    coef_df,
-    x="abs_coefficient",
+    importance_df,
+    x="importance",
     y="feature",
     orientation="h",
-    title="Impact of Features on Medical Charges"
+    title="Bar chart showing features importance"
 )
-
 st.plotly_chart(fig_coef, use_container_width=True)
 
 st.markdown("---")
@@ -203,6 +197,7 @@ st.info("""
     
 """)
 
+# navigation
 st.markdown("---")
 button_col1, button_col2, button_col3 = st.columns(3, gap="medium")
 with button_col1:

@@ -26,7 +26,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Project Info**")
     st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-    st.markdown("Model: Linear Regression")
+    st.markdown("Model: XGBoost Regression")
     st.markdown("Version: 1.0.0")
 
 st.title("📄 Prediction Result")
@@ -50,27 +50,29 @@ st.subheader(
 )
 # risk_level
 if risk["risk_level"] == "High":
-    st.warning(f"### ⚠️ Risk Level: {risk['risk_level']} | Risk color: {risk['risk_color']}⚠️.")
+    st.warning(f"### ⚠️🚨 Risk Level: {risk['risk_level']} | Risk color: {risk['risk_color']}⚠️🚨")
+elif risk["risk_level"] == "Medium":
+    st.info(f"### ☑ Risk Level: {risk['risk_level']} | Risk color: {risk['risk_color']}☑")
 else:
-    st.success(f"### ✅ Risk Level: {risk['risk_level']} | Risk color: {risk['risk_color']}✅.")
+    st.success(f"### ✅ Risk Level: {risk['risk_level']} | Risk color: {risk['risk_color']}✅")
 
 # interpretation
-st.markdown("---")
-st.subheader("🔍 Interpretation")
+# st.markdown("---")
+# st.subheader("🔍 Interpretation")
                     
-if risk["risk_level"] == "High":
-    st.warning("""
+# if risk["risk_level"] == "High":
+#     st.warning("""
          
-    """)
+#     """)
 
-elif risk["risk_level"] == "Medium":
-    st.info("""
+# elif risk["risk_level"] == "Medium":
+#     st.info("""
            
-    """)
-else:
-    st.success("""
+#     """)
+# else:
+#     st.success("""
           
-     """)
+#      """)
     
 # patient_summary
 st.markdown("---")
@@ -92,15 +94,31 @@ st.subheader("💡 Recommendations")
                 
 if risk["risk_level"] == "High":
     st.markdown("""
-           
+        ***Action : Immediate lifestyle intervention advised***
+        
+        - Premium loading of 40-60% above base rate,
+        - Mandatory chronic illness rider included,
+        - Enroll in smoking cessation or weight management program,
+        - Annual full-body medical screening required,
+        - Review coverage every 6 months   
     """)
 elif risk["risk_level"] == "Medium":
     st.markdown("""
-       
+        ***Action : Preventive care and lifestyle monitoring advised***
+        
+        - Standard premium with 10-20% loading,
+        - Preventive care benefits included,
+        - Biannual health check-up recommended,
+        - No-claim discount available after 2 years
     """)
 else:
     st.markdown("""
-    
+        ***Action : Maintain current lifestyle, eligible for loyalty discounts***
+        - Base premium rate, no loading applied,
+        - Eligible for no-claim bonus discount,
+        - Access to wellness rewards program,
+        - Annual check-up sufficient for coverage maintenance,
+        - Option to reduce deductible with continued healthy metrics
     """)
     
 # navigation

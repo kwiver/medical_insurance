@@ -31,12 +31,12 @@ def medical_bill_dashboard():
         st.markdown("---")
         st.markdown("**Project Info**")
         st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-        st.markdown("Model: Linear Regression")
+        st.markdown("Model: XGBoost Regression")
         st.markdown("Version: 1.0.0")
         st.markdown("---")
         
     #load datast
-    df = pd.read_csv("data/cleaned/cleaned_nigeria_medical_insurance.csv")
+    df = pd.read_csv("data/cleaned/cleaned_nigeria_medical_insurance_1.csv")
     
     # header
     st.title("🏥 Medical Insurance Dashboard")

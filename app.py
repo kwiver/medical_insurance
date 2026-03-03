@@ -38,7 +38,7 @@ def home():
         st.markdown("---")
         st.markdown("**Project Info**")
         st.markdown("Dataset: `nigeria_medical_insurance.csv`")
-        st.markdown("Model: Linear Regression")
+        st.markdown("Model: XGBoost Regression")
         st.markdown("Version: 1.0.0")
         
 
