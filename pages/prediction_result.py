@@ -76,7 +76,7 @@ else:
     
 # patient_summary
 st.markdown("---")
-st.subheader("📋 Patient Summary")
+st.subheader("📋 Beneficiary Summary")
 summary_col1, summary_col2 = st.columns(2)
 with summary_col1:
     st.write(f"***Age:*** {age} years")
